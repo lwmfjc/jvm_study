@@ -3,6 +3,8 @@ package com.ly;
 import org.openjdk.jol.info.ClassLayout;
 
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Hello2 {
     public static void main(String[] args) throws InterruptedException {
@@ -21,5 +23,10 @@ public class Hello2 {
                 System.out.println(ClassLayout.parseInstance(o).toPrintable());
             }
         }).start();
+
+        Lock lock=new ReentrantLock();
+        lock.lock();
+
+        lock.unlock();
     }
 }
