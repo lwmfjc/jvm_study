@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 class HelloA{
 
     synchronized public void say(){
+        ThreadLocal threadLocal;
         System.out.println("synchronized时--start");
         System.out.println(ClassLayout.parseInstance(this).toPrintable()); //16字节
         System.out.println("当前线程id(16进制):"+Long.toHexString(Thread.currentThread().getId() ));
