@@ -3,9 +3,14 @@ package com.ly;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import net.sourceforge.pinyin4j.PinyinHelper;
+import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
+import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Data
 class MyClass {
@@ -69,10 +74,12 @@ public class LyTest {
     }
 
     @Test
-    public void test2(){
+    public void test2() {
         ThreadPoolExecutor
                 threadPoolExecutor;
         Executors.newFixedThreadPool(3);
         Executors.newSingleThreadExecutor(Executors.defaultThreadFactory());
+        Executors.newCachedThreadPool(Executors.defaultThreadFactory());
+        Executors.newScheduledThreadPool(3, Executors.defaultThreadFactory());
     }
 }
