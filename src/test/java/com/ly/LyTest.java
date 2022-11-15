@@ -3,15 +3,8 @@ package com.ly;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import net.sourceforge.pinyin4j.PinyinHelper;
-import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
-import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import org.junit.jupiter.api.Test;
-
-import java.util.UUID;
 import java.util.concurrent.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Data
 class MyClass {
