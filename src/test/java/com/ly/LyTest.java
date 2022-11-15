@@ -8,6 +8,7 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
 import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import org.junit.jupiter.api.Test;
 
+import java.util.UUID;
 import java.util.concurrent.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -81,5 +82,40 @@ public class LyTest {
         Executors.newSingleThreadExecutor(Executors.defaultThreadFactory());
         Executors.newCachedThreadPool(Executors.defaultThreadFactory());
         Executors.newScheduledThreadPool(3, Executors.defaultThreadFactory());
+    }
+
+    class MyRejectPolicy extends ThreadPoolExecutor.CallerRunsPolicy{
+        @Override
+        public void rejectedExecution(Runnable r, ThreadPoolExecutor e) {
+            super.rejectedExecution(r, e);
+        }
+    }
+
+    @Test
+    public void test3() throws InterruptedException {
+        log.info("当前线程名Main:{}",Thread.currentThread().getName());
+        TimeUnit.SECONDS.sleep(3);
+        RejectedExecutionHandler handler =new ThreadPoolExecutor.AbortPolicy();
+        /*new RejectedExecutionHandler() {
+            @Override
+            public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+                //log.info("当前线程名reject:{}",Thread.currentThread().getName());
+                //新开一个线程处理任务
+                new Thread(r).start();
+            }
+        };*/
+        ThreadPoolExecutor threadPoolExecutor=
+                new ThreadPoolExecutor(3, 3, 1, TimeUnit.SECONDS, new LinkedBlockingDeque<>(3), Executors.defaultThreadFactory(), handler);
+        for(int i=0;i<1000;i++) {
+            int finalI = i;
+            threadPoolExecutor.execute(() -> {
+                System.out.println("hello");
+                log.info("运行任务：{}{}", finalI,Thread.currentThread().getName());
+            });
+
+        }
+        threadPoolExecutor.shutdown();
+        while (true)
+        TimeUnit.SECONDS.sleep(3);
     }
 }
