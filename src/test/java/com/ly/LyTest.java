@@ -2,9 +2,15 @@ package com.ly;
 
 
 import lombok.Data;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+
+import java.util.Random;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.regex.Pattern;
 
 @Data
 class MyClass {
@@ -110,5 +116,28 @@ public class LyTest {
         threadPoolExecutor.shutdown();
         while (true)
         TimeUnit.SECONDS.sleep(3);
+    }
+    @Test
+    public void ss(){
+        boolean matches = Pattern.matches("^(.+)\\d{8}$", "18681500802");
+        System.out.println(matches);
+        /*String a="123";
+        String format = String.format("lalala%sabc", a);
+        System.out.println(format);
+        AtomicInteger atomicInteger=new AtomicInteger();
+        atomicInteger.incrementAndGet();
+        A a1 = new A();
+        a1.setA(2);
+        a1.setB(10);
+        A a2 = new A();
+        a2.setA(4);
+        a2.setB(5);
+        A a3 = new A();
+        a3.setA(6);
+        a3.setB(7);
+        AtomicReference<A> aAtomicReference = new AtomicReference<>(a1);
+        a1.setA(333);
+        aAtomicReference.compareAndSet(a1,a3);
+        System.out.println(aAtomicReference.get());*/
     }
 }
