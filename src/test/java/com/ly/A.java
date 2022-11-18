@@ -2,6 +2,7 @@ package com.ly;
 
 import lombok.Data;
 import lombok.ToString;
+import sun.misc.Unsafe;
 
 import java.util.Objects;
 
@@ -27,6 +28,7 @@ public class A extends Object {
             return false;
         }
         A obj = (A) o;
+        Unsafe unsafe;
         return obj.a * obj.b == this.a * this.b;
     }
 }
