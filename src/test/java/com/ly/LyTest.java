@@ -118,8 +118,9 @@ public class LyTest {
         TimeUnit.SECONDS.sleep(3);
     }
     @Test
-    public void ss(){
-        boolean matches = Pattern.matches("^(.+)\\d{8}$", "18681500802");
+    public void ss() throws InterruptedException {
+        //boolean matches = Pattern.matches("^(.+)\\d{8}$", "18681500802");
+        boolean matches = Pattern.matches("^a.+b$", "a123b");
         System.out.println(matches);
         /*String a="123";
         String format = String.format("lalala%sabc", a);
@@ -139,5 +140,35 @@ public class LyTest {
         a1.setA(333);
         aAtomicReference.compareAndSet(a1,a3);
         System.out.println(aAtomicReference.get());*/
+
+        Thread thread1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                log.info("暂停5s");
+                try {
+                    TimeUnit.SECONDS.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread1.start();
+        Thread thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                log.info("暂停3s");
+                try {
+                    TimeUnit.SECONDS.sleep(3);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread2.start();
+        thread1.join();
+        thread2.join();
+        log.info("主线程执行");
+        ScheduledThreadPoolExecutor a;
+
     }
 }
