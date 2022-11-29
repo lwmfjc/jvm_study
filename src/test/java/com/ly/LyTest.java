@@ -171,4 +171,29 @@ public class LyTest {
         ScheduledThreadPoolExecutor a;
 
     }
+
+    @Test
+    public void threadPoolTest(){
+        /*boolean matches = Pattern.matches("^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\\d{8}$", "15811829505");
+        System.out.println("手机号"+matches);
+        String verCode = new Random().nextInt(9000)+1000+"";
+        System.out.println(verCode);*/
+        /*ThreadPoolExecutor threadPoolExecutor=new ThreadPoolExecutor(1,3,3L,TimeUnit.SECONDS,
+                new LinkedBlockingDeque<>());
+        threadPoolExecutor.submit(new Callable<Object>() {
+            @Override
+            public Object call() throws Exception {
+                return null;
+            }
+        });*/
+        //Executors.newFi
+        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(3);
+        scheduledExecutorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                log.info("执行任务");
+            }
+        });
+        scheduledExecutorService.shutdown();
+    }
 }
