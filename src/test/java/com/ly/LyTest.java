@@ -6,6 +6,8 @@ import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -195,5 +197,28 @@ public class LyTest {
             }
         });
         scheduledExecutorService.shutdown();
+    }
+
+
+    private String timeToDate(Long lt){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSSSSS");
+        Date date = new Date(lt);
+        String format = simpleDateFormat.format(date);
+        return format;
+    }
+
+    /**
+     * （1）System.currentTimeMillis 返回的毫秒，这个毫秒其实就是自1970年1月1日0时起的毫秒数.
+     *
+     * （2）java 中 System.nanoTime() 返回的是纳秒，nanoTime 而返回的可能是任意时间，甚至可能是负数
+     */
+    @Test
+    public void timeTest() {
+        long time1 = System.currentTimeMillis();
+        long time2 = System.currentTimeMillis();
+        log.info("time1#{} time2#{}", timeToDate(time1), timeToDate(time2));
+        long nanot1 = System.nanoTime();
+        long nanot2 = System.nanoTime();
+        log.info("nanot1#{}---nanot2#{}", timeToDate(nanot1), timeToDate(nanot2));
     }
 }
