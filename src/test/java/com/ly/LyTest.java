@@ -12,6 +12,8 @@ import java.util.Random;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.regex.Pattern;
 
 @Data
@@ -220,5 +222,26 @@ public class LyTest {
         long nanot1 = System.nanoTime();
         long nanot2 = System.nanoTime();
         log.info("nanot1#{}---nanot2#{}", timeToDate(nanot1), timeToDate(nanot2));
+    }
+    @Test
+    public void tt() throws InterruptedException {
+        Lock reLock=new ReentrantLock();
+        //reLock.lock();
+        for(int i=0;i<100;i++){
+            int finalI = i;
+            new Thread(()->{
+                reLock.lock();
+                try {
+                    log.info("线程标志"+finalI+"即将停止10s");
+                    TimeUnit.SECONDS.sleep(10);
+                    log.info("线程标志"+finalI+"停止结束");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                reLock.unlock();
+            }).start();
+            TimeUnit.SECONDS.sleep(1);
+        }
+        while (true){}
     }
 }
