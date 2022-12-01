@@ -225,7 +225,7 @@ public class LyTest {
     }
     @Test
     public void tt() throws InterruptedException {
-        Lock reLock=new ReentrantLock();
+        Lock reLock=new ReentrantLock(false);
         //reLock.lock();
         for(int i=0;i<100;i++){
             int finalI = i;
