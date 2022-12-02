@@ -33,7 +33,9 @@ public class CycleBarrierTEst {
     public static void test(int threadnum) throws InterruptedException, BrokenBarrierException {
         System.out.println("threadnum:" + threadnum + "is ready");
         try {
-            /**等待60秒，保证子线程完全执行结束*/
+            /**等待60秒，保证子线程完全执行结束
+             * 这里有歧义，说的是，如果60s还没放开，则提前放开
+             * */
             cyclicBarrier.await(60, TimeUnit.SECONDS);
         } catch (Exception e) {
             System.out.println("-----CyclicBarrierException------");
