@@ -41,5 +41,7 @@ public class AtomicStampedReferenceDemo {
         System.out.println("currentValue=" + asr.getReference()
                 + ", currentStamp=" + asr.getStamp()
                 + ", wCasResult=" + wCasResult);
+        ThreadLocal threadLocal;
+        Thread thread;
     }
 }

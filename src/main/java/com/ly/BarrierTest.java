@@ -1,11 +1,13 @@
 package com.ly;
 
+import com.test.AtomicTest;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.*;
 @Slf4j
 public class BarrierTest {
     public static void main(String[] args) {
+        AtomicTest.ABC abc;
 
         CyclicBarrier cyclicBarrier=new CyclicBarrier(5);
         ExecutorService executorService = Executors.newFixedThreadPool(10);
