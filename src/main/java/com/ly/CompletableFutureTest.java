@@ -8,6 +8,14 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class CompletableFutureTest {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
+        test();
+    }
+
+    public static void test(){
+
+    }
+
+    public static void test1(){
         CompletableFuture<String> stringCompletableFuture = CompletableFuture.supplyAsync(() -> {
             try {
                 TimeUnit.SECONDS.sleep(3);
@@ -17,21 +25,21 @@ public class CompletableFutureTest {
             return "hello,world!";
         });
         log.info("被阻塞啦----");
-         stringCompletableFuture
-                 .whenComplete((s,e)->{
-                     log.info("complete1----"+s);
-                 })
-                 .whenComplete((s,e)->{
-                     log.info("complete2----"+s);
-                 })
-                 .thenAccept(s->{
-                     log.info("打印结果"+s);
-                 })
-                 .thenRun(()->{
+        stringCompletableFuture
+                .whenComplete((s,e)->{
+                    log.info("complete1----"+s);
+                })
+                .whenComplete((s,e)->{
+                    log.info("complete2----"+s);
+                })
+                .thenAccept(s->{
+                    log.info("打印结果"+s);
+                })
+                .thenRun(()->{
                     log.info("阻塞结束啦");
                 });
-         while (true){
+        while (true){
 
-         }
+        }
     }
 }
