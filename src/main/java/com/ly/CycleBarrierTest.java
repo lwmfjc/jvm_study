@@ -2,7 +2,7 @@ package com.ly;
 
 import java.util.concurrent.*;
 
-public class CycleBarrierTEst {
+public class CycleBarrierTest {
     // 请求的数量
     private static final int threadCount = 550;
     // 需要同步的线程数量
