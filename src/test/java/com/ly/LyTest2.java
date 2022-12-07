@@ -8,6 +8,11 @@ import java.util.concurrent.*;
 
 @Slf4j
 public class LyTest2 {
+
+    @Test
+    public void a(){
+
+    }
     @Test
     public void myTest() throws InterruptedException {
         final int count = 10;

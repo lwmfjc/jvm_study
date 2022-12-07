@@ -9,9 +9,23 @@ import java.util.concurrent.TimeUnit;
 public class CompletableFutureTest {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         test();
+        while (true){}
     }
 
-    public static void test(){
+    public static void test() throws ExecutionException, InterruptedException {
+        CompletableFuture<String> future
+                = CompletableFuture.supplyAsync(() -> {
+            if (true) {
+                throw new RuntimeException("Computation error!");
+            }
+            return "hello!";
+        }).handle((res, ex) -> {
+            // res 代表返回的结果
+            // ex 的类型为 Throwable ，代表抛出的异常
+            return res != null ? res : ex.toString()+"world!";
+        });
+        String s = future.get();
+        log.info(s);
 
     }
 
