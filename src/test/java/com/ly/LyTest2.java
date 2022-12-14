@@ -4,6 +4,8 @@ import com.sun.jmx.snmp.tasks.ThreadService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.*;
 
 @Slf4j
@@ -64,5 +66,13 @@ public class LyTest2 {
         }
         executorService.shutdown();
         log.info("关闭线程池");
+    }
+
+    @Test
+    public void cc(){
+        Map<String, Object> a=new HashMap<>();
+        a.put("a",123);
+        a.put("b",333);
+        System.out.println(a.toString());
     }
 }
