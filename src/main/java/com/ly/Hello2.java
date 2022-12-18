@@ -8,6 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Hello2 {
     public static void main(String[] args) throws InterruptedException {
+        ClassLoader classLoader;
         //开启偏向锁
         TimeUnit.SECONDS.sleep(5);
         //这个对象的创建必须在4s延迟之后,即偏向锁开启后再创建对象才能体现出来
