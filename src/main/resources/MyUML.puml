@@ -1,0 +1,22 @@
+@startuml
+class Department
+class IDCard
+class Person
+class PersonDao
+class PersonServiceBean{
+ - personDao: PersonDao
+ + save(person:Person):void
+ + getIdCard(personid:Integer):IDCard
+ + modify():void
+}
+IDCard  <..PersonServiceBean
+Person   <..PersonServiceBean
+PersonDao  <..PersonServiceBean
+Department  <..PersonServiceBean
+
+abstract class Daosupport{
+ + save(entity:Object)
+ + delete(id:Object)
+}
+Daosupport <|-- PersonServiceBean
+@enduml
