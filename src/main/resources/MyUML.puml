@@ -18,5 +18,11 @@ abstract class Daosupport{
  + save(entity:Object)
  + delete(id:Object)
 }
-Daosupport <|-- PersonServiceBean
+
+ PersonServiceBean --|> Daosupport
+interface PersonService{
+ + delete(id:Integer):void
+}
+PersonServiceBean ..|> PersonService
+
 @enduml
