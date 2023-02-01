@@ -16,7 +16,7 @@ public class UnsafeGet {
         ;
     }
 
-    private static Unsafe reflectGetUnsafe() {
+    public static Unsafe reflectGetUnsafe() {
         try {
             Field field = Unsafe.class.getDeclaredField("theUnsafe");
             field.setAccessible(true);
