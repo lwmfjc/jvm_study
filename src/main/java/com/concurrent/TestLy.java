@@ -2,7 +2,7 @@ package com.concurrent;
 import org.apache.log4j.helpers.ThreadLocalMap;
 
 import java.text.SimpleDateFormat;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -11,12 +11,31 @@ public class TestLy {
     //如果加上volatile,就能保证可见性，线程1 才能停止
       boolean stop = false;//对象属性
 
-    public static void main(String[] args) throws InterruptedException {
-        ThreadLocal<String>  threadLocal =ThreadLocal.withInitial(()->"abc");
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
+        Executors.newFixedThreadPool(3);
+        /*FutureTask<String> futureTask=new FutureTask<>(new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                System.out.println("等3s再把结果给你");
+                TimeUnit.SECONDS.sleep(3);
+                return "hello world";
+            }
+        });
+        new Thread(futureTask).start();
+        String s = futureTask.get();
+        System.out.println("3s后获取到了结果"+s);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("abc");
+            }
+        }).start();*/
+        /*ThreadLocal<String>  threadLocal =ThreadLocal.withInitial(()->"abc");
         threadLocal.set("sssa");
         threadLocal.remove();
         Thread thread;
-        System.out.println(new SimpleDateFormat().toPattern());
+        System.out.println(new SimpleDateFormat().toPattern());*/
        /*TestLy atomicTest = new TestLy();
         new Thread(() -> {
             while (!atomicTest.stop) {
