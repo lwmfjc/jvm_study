@@ -4,6 +4,7 @@ import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
 import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 
+import java.security.cert.Extension;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,7 +12,11 @@ import java.util.regex.Pattern;
  * 姓名转拼音
  */
 public class ChineseCharacterUtil {
+    private static final String a="aaa";
     public static String convertCustom(String hanzi){
+       // a=null;
+
+       // a=null;
         System.out.println(hanzi.length());
         int length = hanzi.length();
         if(length<3){
