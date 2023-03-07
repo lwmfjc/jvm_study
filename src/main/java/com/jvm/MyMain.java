@@ -1,12 +1,20 @@
 package com.jvm;
 
+import java.io.BufferedInputStream;
+import java.io.DataInputStream;
+import java.io.InputStreamReader;
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.zip.ZipInputStream;
 
 public class MyMain {
     private byte[] x = new byte[10 * 1024 * 1024];//10M
 
     public static void main(String[] args) throws Exception {
+        DataInputStream dataInputStream;
+        ZipInputStream sa
+                ;
+        InputStreamReader inputStreamReader;
         Callable<Object> abc = Executors.callable(() -> {
             try {
                 TimeUnit.SECONDS.sleep(2);
