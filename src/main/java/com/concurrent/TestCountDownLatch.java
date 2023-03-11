@@ -10,6 +10,8 @@ import java.util.concurrent.TimeUnit;
  * 测试五个线程等待
  */
 public class TestCountDownLatch {
+    private final int a = 974;
+    private static int b = 974;
     public static void main(String[] args) {
         CountDownLatch countDownLatch=new CountDownLatch(5);
         new Thread(()->{
