@@ -3,6 +3,7 @@ package com.aqs;
 import java.util.concurrent.*;
 
 public class BarrierTest1 {
+    protected void a(){}
     public static void main(String[] args) throws InterruptedException, TimeoutException, BrokenBarrierException {
 
         CyclicBarrier cyclicBarrier = new CyclicBarrier(3);
