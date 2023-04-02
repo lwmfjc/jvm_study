@@ -60,6 +60,7 @@ class MyCglibProxyInterceptor implements MethodInterceptor{
     }
 }
 
+
 @Slf4j
 public class Test {
     String a;
@@ -75,6 +76,7 @@ public class Test {
         //LyImpl o = (LyImpl)enhancer.create();
         o.say("lyly");
         log.info(Arrays.toString(LyImpl.class.getInterfaces()));
+        while(true){}
         /*LyImpl target = new LyImpl();
         ILy targetProxy = (ILy)Proxy.newProxyInstance(Test.class.getClassLoader(),
                 target.getClass().getInterfaces(), new MyInvocationHandler(target));
