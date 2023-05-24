@@ -2,3 +2,9 @@
 target/
 *.iml
 src/com/
+*.index
+*.body
+*.head
+*.inbounds
+*.outbounds
+*.hprof
