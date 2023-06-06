@@ -8,3 +8,5 @@ src/com/
 *.inbounds
 *.outbounds
 *.hprof
+java_pid4404.hprof.gvhch.b.ij/
+*.data
