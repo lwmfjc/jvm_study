@@ -25,7 +25,7 @@ public class LyServer {
 
         serverSocketChannel.configureBlocking(false);
 
-        //这个通道(serverSocketChannel)用来接收客户端的请求，关心时间为ACCEPT
+        //这个通道(serverSocketChannel)用来接收客户端的请求，关心事件为ACCEPT
         serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
 
         //循环等待客户端连接
