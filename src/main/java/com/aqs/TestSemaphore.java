@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TestSemaphore {
     public static void main(String[] args) {
-        Semaphore semaphore = new Semaphore(3);//能同时运行3个
+        Semaphore semaphore = new Semaphore(5);//能同时运行3个
 
         for (int i = 0; i < 15; i++) {
             int finalI = i;
